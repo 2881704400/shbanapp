@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分行运营情况</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="left-pannel">
+				<div class="three-pannel">
+					<p class="three-pannel-title">分支行各渠道业务情况</p>
+					<div class="panelContent-table">
+						<ul class="panelContent-title">
+							<li style="width: 18%;">支行名称</li>
+							<li style="width: 18%;">渠道类型</li>
+							<li style="width: 21%;">5分钟交易量</li>
+							<li style="width: 21%;">平均处理时间</li>
+							<li style="width: 22%;">平均成功率</li>
+						</ul>
+						<div class="center-box bank-qudao">
+							<ul class="panelContent-main">
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+								<li><span>红岭支行</span><span>新柜面</span><label>3</label><label>500ms</label><font>100%</font></li>
+							</ul>
+						</div>
+					</div>
+					<!--<table border="1" cellspacing="0" cellpadding="0" class="panelContent" style="height: 78%;">
+						<tr>
+							<th>支行名称</th>
+							<th>渠道类型</th>
+							<th>5分钟交易量</th>
+							<th>平均处理时间</th>
+							<th>平均成功率</th>
+						</tr>
+						<tr>
+							<td>红岭支行</td>
+							<td>新柜面</td>
+							<td>3</td>
+							<td>500ms</td>
+							<td>100%</td>
+						</tr>
+						<tr>
+							<td>红岭支行</td>
+							<td>新柜面</td>
+							<td>3</td>
+							<td>500ms</td>
+							<td>100%</td>
+						</tr>
+						<tr>
+							<td>红岭支行</td>
+							<td>新柜面</td>
+							<td>3</td>
+							<td>500ms</td>
+							<td>100%</td>
+						</tr>
+						<tr>
+							<td>红岭支行</td>
+							<td>新柜面</td>
+							<td>3</td>
+							<td>500ms</td>
+							<td>100%</td>
+						</tr>
+						<tr>
+							<td>红岭支行</td>
+							<td>新柜面</td>
+							<td>3</td>
+							<td>500ms</td>
+							<td>100%</td>
+						</tr>
+					</table>-->
+				</div>
+				<div class="three-pannel" >
+					<p class="three-pannel-title">贷款余额</p>
+					<div class="panelContent" id="loanChart"></div>
+				</div>
+				<div class="three-pannel" >
+					<p class="three-pannel-title">交易量天趋势数据</p>
+					<div class="panelContent" id="loanChart2"></div>
+				</div>
+			</div>
+			<div class="right-pannel">
+				<div id="container" class="container"></div>
+				<div class="bottom-pannel">
+					<div class="half-pannel">
+						<p class="three-pannel-title">性能数据</p>
+						<div class="panelContent" id="loanChart3"></div>
+					</div>
+					<div class="half-pannel">
+					<p class="three-pannel-title">分行重要业务系统交易量情况</p>
+					<div class="panelContent-table">
+						<ul class="panelContent-title">
+							<li style="width: 18%;">渠道类型</li>
+							<li style="width: 18%;">5分钟交易量</li>
+							<li style="width: 21%;">平均处理时间</li>
+							<li style="width: 21%;">平均成功率</li>
+							<li style="width: 22%;">备注</li>
+						</ul>
+						<div class="center-box bank-jiaoyi">
+							<ul class="panelContent-main">
+								<li><span>CRMS</span><span>2</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>信用卡交易</span><span>150</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>深圳同城</span><span>20</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>微粒贷</span><span>在贷余额</span><label>—</label><label>—</label><font>T+1日数据</font></li>
+								<li><span>深圳中登</span><span>3</span><label>520ms</label><label>100%</label><font>分行可获取数据</font></li>
+								<li><span>CRMS</span><span>2</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>信用卡交易</span><span>150</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>深圳同城</span><span>20</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>微粒贷</span><span>在贷余额</span><label>—</label><label>—</label><font>T+1日数据</font></li>
+								<li><span>深圳中登</span><span>3</span><label>520ms</label><label>100%</label><font>分行可获取数据</font></li>
+								<li><span>CRMS</span><span>2</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>信用卡交易</span><span>150</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>深圳同城</span><span>20</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>微粒贷</span><span>在贷余额</span><label>—</label><label>—</label><font>T+1日数据</font></li>
+								<li><span>深圳中登</span><span>3</span><label>520ms</label><label>100%</label><font>分行可获取数据</font></li>
+								<li><span>CRMS</span><span>2</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>信用卡交易</span><span>150</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>深圳同城</span><span>20</span><label>500ms</label><label>100%</label><font>—</font></li>
+								<li><span>微粒贷</span><span>在贷余额</span><label>—</label><label>—</label><font>T+1日数据</font></li>
+								<li><span>深圳中登</span><span>3</span><label>520ms</label><label>100%</label><font>分行可获取数据</font></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ED2d59e127427eba231c96ba1b49af84"></script>
+		<script src="js/echarts.min.js"></script>
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/InfoBox.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scroll.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
