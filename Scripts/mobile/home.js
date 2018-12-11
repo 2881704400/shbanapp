@@ -3,15 +3,15 @@
 function onHomePage() {
 	
 
-		var u = navigator.userAgent, app = navigator.appVersion; 
-		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器 
-		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
+	var u = navigator.userAgent, app = navigator.appVersion; 
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器 
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
 
-		if(isiOS){
+	if(isiOS){
 
-			$('body').css({paddingTop:"20px",background:"#258de5",boxSizing:"border-box"})
+		$('body').css({paddingTop:"20px",background:"#258de5",boxSizing:"border-box"})
 
-		}
+	}
 	
 
 	$(".notHomeBar").css({"background":"none"})
@@ -41,7 +41,7 @@ function onHomePage() {
 //	myApp.alert( window.localStorage.ac_appkey)
 //	mainView.router.loadPage("accessControlSys.html")
 //	mainView.router.loadPage("wardrobeSys.html")
-	// mainView.router.loadPage("visitorSys_admin.html")
+//  mainView.router.loadPage("visitorSys_admin.html")
 //	mainView.router.loadPage("visitorSys.html")
 //	mainView.router.loadPage("meetingSys.html")
 //  mainView.router.loadPage("meetingSys_admin.html")
