@@ -41,7 +41,7 @@ function onHomePage() {
 //	myApp.alert( window.localStorage.ac_appkey)
 //	mainView.router.loadPage("accessControlSys.html")
 //	mainView.router.loadPage("wardrobeSys.html")
-//	mainView.router.loadPage("visitorSys_admin.html")
+	// mainView.router.loadPage("visitorSys_admin.html")
 //	mainView.router.loadPage("visitorSys.html")
 //	mainView.router.loadPage("meetingSys.html")
 //  mainView.router.loadPage("meetingSys_admin.html")
@@ -98,8 +98,7 @@ function loadHome(){
        				<p>访客系统</p>
        			</div>
        			<div class="itemOne" style="background:none;box-shadow:none;">
-     			</div>
-       			`
+     			</div>`;
     var html=`
        			<div class="itemOne" onclick="goPage(3)">
        				<div class="imgWrap">
@@ -108,7 +107,7 @@ function loadHome(){
        				<p>会议系统</p>
        			</div>
        			<div class="itemOne" style="background:none;box-shadow:none;">
-     			</div>`
+     			</div>`;
     
     $(".prog .itemLine").append(vis)
 		

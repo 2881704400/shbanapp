@@ -1,4 +1,6 @@
+var memDefault=null;
 function visitorSys_admin(){
+	loadMemDefault()
 var calendar = new datePicker();
 		calendar.init({
 			'trigger': '#timePicker', /*按钮选择器，用于触发弹出插件*/
@@ -11,8 +13,6 @@ var calendar = new datePicker();
 			'onClose':function(){/*取消时触发事件*/
 			}
 		});
-	
-	var date=getToday();
 //	getMember()
 	$(".memChoose").click(function(){
 		closeMem()
@@ -20,53 +20,22 @@ var calendar = new datePicker();
 	$(".memCon").click(function(e){
 		e.stopPropagation()
 	})
-	$.ajax({
-		type:"post",
-		url:"/api/Event/get_today_reser",
-		data:{		
-			time:date,
-			workNo:window.localStorage.userNameApp
-		},
-		async:true,
-		headers:{
-			Authorization:window.localStorage.ac_appkey+"-"+window.localStorage.ac_infokey,
-		},
-		success:function(res){
-			console.log(res)
-			var data=res.HttpData.data;
-			loadVisitorHtml(data)
-		}
-	});
+	
 	$(".lookMore").click(function(){
 		$(this).css({display:"none"})
 	})
 	$(".conWrap").click(function(event){
 		event.stopPropagation()
 	})
+	loadVisiTorList();
 	
 	var ptrContent1 = $$('#today');
 	ptrContent1.on('refresh', function (e) {
   
-    setTimeout(function () {
-		    $.ajax({
-				type:"post",
-				url:"/api/Event/get_today_reser",
-				data:{		
-					time:date,
-					workNo:window.localStorage.userNameApp
-				},
-				async:true,
-				headers:{
-					Authorization:window.localStorage.ac_appkey+"-"+window.localStorage.ac_infokey,
-				},
-				
-				success:function(res){
-					var data=res.HttpData.data;
-					loadVisitorHtml(data)
-				}
-			});
-	        myApp.pullToRefreshDone();
-	    }, 2000);
+	    setTimeout(function () {
+	    	loadVisiTorList()
+		        myApp.pullToRefreshDone();
+		    }, 2000);
 	});
 	$("#today .con").scroll(function(){
 		if($(this).scrollTop()==0){
@@ -80,12 +49,48 @@ var calendar = new datePicker();
 		initTimer()
 		e.stopPropagation()
 	})
-	
-//	$$('#setSta').on('click', function () {
-//		console.log(222)
-//	  
-//	});
-
+}
+function loadMemDefault(){
+	// get_mem_infor_pc
+	$.ajax({
+		type:"post",
+		url:"/api/Event/get_mem_infor_pc",
+		data:{		
+			workNo:window.localStorage.userNameApp
+		},
+		async:true,
+		headers:{
+			Authorization:window.localStorage.ac_appkey+"-"+window.localStorage.ac_infokey,
+		},
+		success:function(res){
+			console.log(res)
+			var dat=res.HttpData.data[0];
+			$("#name").val(dat.name);
+			$("#tel").val(dat.phone);
+			$("#part").val(dat.department);
+			$("#carNum").val(dat.workNo);
+			memDefault=dat.workNo;
+		}
+	});
+}
+function loadVisiTorList(){
+	var date=getToday();
+	$.ajax({
+		type:"post",
+		url:"/api/Event/get_today_reser",
+		data:{		
+			time:date,
+			workNo:window.localStorage.userNameApp
+		},
+		async:true,
+		headers:{
+			Authorization:window.localStorage.ac_appkey+"-"+window.localStorage.ac_infokey,
+		},
+		success:function(res){
+			var data=res.HttpData.data;
+			loadVisitorHtml(data)
+		}
+	});
 }
 
 function loadVisitorHtml(data){
@@ -98,7 +103,6 @@ function loadVisitorHtml(data){
 			if(!data[i].status){
 				noArr='noArr';
 				status="未到访";
-	//			qrcode="icon-yduierweimasaomiao";
 				lookInfor='<div class="col-20" id="setSta" onclick="setSta('+data[i].id+',event)">到访</div>';
 			}else{
 				lookInfor='<div class="col-20"></div>';
@@ -134,7 +138,6 @@ function setSta(id,event){
 	
 }
 function closethis(dom){
-	
 	$(dom).css({"zIndex":"-999",opacity:0});
 }
 function closeTime(){
@@ -179,13 +182,10 @@ function closeTime(){
 			}else{
 				myApp.alert("操作失败","温馨提示")
 			}
-			console.log(res)
 		}
 	});
 }
-function setVisitor(){
-	console.log(22)
-}
+
 function lookInfor(id,cardNum){
 	$(".inforWrap").html("")
 	$(".btnWrap").html("")
@@ -205,14 +205,15 @@ function lookInfor(id,cardNum){
 //			console.log(res)
 			var dat=res.HttpData.data[0];
 					var day=getToday().split("-")[2];
-					$(".day").text(day+"日")
-					$(".week").text(getWeek(day))
-					
-					var btn=""
+
+					$(".day").text(day+"日");
+
+					$(".week").text(getWeek(new Date().getDay()))
+
 //					if(!dat.status){
 //						btn='<div class="btn"><a href="#" class="button button-fill button-big qrcode " onclick="getCamera('+id+')">扫一扫</a></div>';
 //					}else{
-						btn='<div class="btn"><a href="#" class="button button-fill  button-big sure" onclick="closeFun()">确定</a></div>';
+					var	btn='<div class="btn"><a href="#" class="button button-fill  button-big sure" onclick="closeFun()">确定</a></div>';
 //					}
 					var html='<div class="cont">'+
 								'<div class="row itemLine">'+
@@ -271,9 +272,6 @@ function showMem(){
 		async:true,
 		headers:{
 			Authorization:window.localStorage.ac_appkey+"-"+window.localStorage.ac_infokey,
-		},
-		headers:{
-			Authorization:window.localStorage.ac_appkey+"-"+window.localStorage.ac_infokey,
 		},success:function(res){
 			var dat=res.HttpData.data;
 			getMember('',dat[0].department)
@@ -306,7 +304,20 @@ function getMember(dom,txt){
 //			console.log(res)
 			var dat=res.HttpData.data
 			for(var i=0;i<dat.length;i++){
-				var html=' <li>'+
+				if(dat[i].workNo==memDefault){
+					var html=' <li>'+
+						      '<label class="label-checkbox item-content" onclick="sureThisMem(this,\''+dat[i].workNo+'\')">'+
+						        '<input type="checkbox" checked="checked" name="my-checkbox" value="'+dat[i].workNo+'" />'+
+						       ' <div class="item-media">'+
+						          '<i class="icon icon-form-checkbox" ></i>'+
+						       ' </div>'+
+						        '<div class="item-inner">'+
+						         ' <div class="item-title">'+dat[i].name+'</div>'+
+						       ' </div>'+
+						     ' </label>'+
+						   ' </li>';
+				}else{
+					var html=' <li>'+
 						      '<label class="label-checkbox item-content" onclick="sureThisMem(this,\''+dat[i].workNo+'\')">'+
 						        '<input type="checkbox" name="my-checkbox" value="'+dat[i].workNo+'" />'+
 						       ' <div class="item-media">'+
@@ -317,6 +328,8 @@ function getMember(dom,txt){
 						       ' </div>'+
 						     ' </label>'+
 						   ' </li>';
+				}
+				
 				$(".memList ul").append(html)
 			}
 		}
@@ -327,6 +340,7 @@ function closeMem(){
 	$("#visitorSys .page-content").css({overflow:"auto"})
 }
 function sureThisMem(dom,id){
+	memDefault=id;
 	$(dom).parent().siblings().find("input").prop("checked",false)
 	var dat=get_mem_infor(id);
 	$("#name").val(dat[3]).attr("nameId",id);
@@ -383,24 +397,7 @@ function upVisitor(){
 				$("#todayLink").addClass("active")
 				$("#pre").removeClass("active")
 				$("#pre").find("input").val("")
-				var date=getToday();
-				$.ajax({
-					type:"post",
-					url:"/api/Event/get_today_reser",
-					data:{		
-						time:date,
-						workNo:window.localStorage.userNameApp
-						
-					},
-					async:true,
-					headers:{
-						Authorization:window.localStorage.ac_appkey+"-"+window.localStorage.ac_infokey,
-					},
-					success:function(res){
-						var data=res.HttpData.data;
-						loadVisitorHtml(data)
-					}
-				});
+				loadVisiTorList()
 			}
 //			console.log(res)
 		}

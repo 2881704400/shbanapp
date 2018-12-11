@@ -2,10 +2,11 @@
 function getWeek(dateStr){
 	
 	var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-    var myDate = new Date(Date.parse(dateStr.replace(/-/g, "/")));
-    return weekDay[myDate.getDay()]
+    // var myDate = new Date(Date.parse(dateStr.replace(/-/g, "/")));
+    return weekDay[dateStr]
        
 }
+
 //获取日期
 function getToday(){
 	

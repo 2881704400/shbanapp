@@ -147,57 +147,57 @@ function InitEnsure() {
                 myApp.hideIndicator();
                 $("#homeContents").show();
 //              console.log("连接成功！");
-                $.ajax({
-                    type: "post",
-                    url: service + "/UserPermissions",
-                    data: "userName=" + window.localStorage.userName,
-                    success: function (usersDt) {
-                        getWebUser = $(usersDt).children("UserItem");
-                        $.ajax({
-                            type: "post",
-                            url: service + "/QueryTableData",
-                            async: false,
-                            data: "tableName=GWAddinModule",
-                            success: function (dtGWAddinModule) {
-                                GWAddinModule = new Array();
-                                var datas = $(dtGWAddinModule).children("string").text();
-                                var usera = JSON.parse(datas);
-                                for (var i = 0, j = 0; i < usera.length; i++) {
-                                    var userb = usera[i];
-                                    if (userb.WebPage[0] == "1" && userb.ClassName.split('.').length > 2) {
-                                        var userc = new Array(userb.ID, userb.Name, userb.ClassName, userb.HelpPath, userb.MultiScreens, userb.WebPage);
-                                        GWAddinModule[j++] = userc;
-                                    }
-                                }
-                                IsAdministrator = $(dt).children("UserItem").find("IsAdministrator").text();
-                                isAddinModule_List("MessageTool");
-                                isAddinModule_List("RealTimeTool");
-                                isAddinModule_List("VoiceTool");
-                                isAddinModule_List("VideoTool");
-                            }
-                        });
+                // $.ajax({
+                //     type: "post",
+                //     url: service + "/UserPermissions",
+                //     data: "userName=" + window.localStorage.userName,
+                //     success: function (usersDt) {
+                //         getWebUser = $(usersDt).children("UserItem");
+                //         $.ajax({
+                //             type: "post",
+                //             url: service + "/QueryTableData",
+                //             async: false,
+                //             data: "tableName=GWAddinModule",
+                //             success: function (dtGWAddinModule) {
+                //                 GWAddinModule = new Array();
+                //                 var datas = $(dtGWAddinModule).children("string").text();
+                //                 var usera = JSON.parse(datas);
+                //                 for (var i = 0, j = 0; i < usera.length; i++) {
+                //                     var userb = usera[i];
+                //                     if (userb.WebPage[0] == "1" && userb.ClassName.split('.').length > 2) {
+                //                         var userc = new Array(userb.ID, userb.Name, userb.ClassName, userb.HelpPath, userb.MultiScreens, userb.WebPage);
+                //                         GWAddinModule[j++] = userc;
+                //                     }
+                //                 }
+                //                 IsAdministrator = $(dt).children("UserItem").find("IsAdministrator").text();
+                //                 isAddinModule_List("MessageTool");
+                //                 isAddinModule_List("RealTimeTool");
+                //                 isAddinModule_List("VoiceTool");
+                //                 isAddinModule_List("VideoTool");
+                //             }
+                //         });
 
-                        $.ajax({
-                            type: "post",
-                            url: service + "/QueryTableData",
-                            async: false,
-                            data: "tableName=GWEquipPages",
-                            success: function (dtGWEquipPages) {
-                                GWEquipPages = new Array();
-                                var datadtGWEquipPages = $(dtGWEquipPages).children("string").text();
-                                var usera = JSON.parse(datadtGWEquipPages);
-                                for (var i = 0, j = 0; i < usera.length; i++) {
-                                    var userb = usera[i];
-                                    if (userb.WebPage[0] == "1" && userb.Pages.split('.').length > 2) {
-                                        var userc = new Array(userb.ID, userb.Name, userb.Pages, userb.HelpPath, userb.MultiScreens, userb.WebPage);
-                                        GWEquipPages[j++] = userc;
-                                    }
-                                }
-                                pageLists();
-                            }
-                        });
-                    }
-                });
+                //         $.ajax({
+                //             type: "post",
+                //             url: service + "/QueryTableData",
+                //             async: false,
+                //             data: "tableName=GWEquipPages",
+                //             success: function (dtGWEquipPages) {
+                //                 GWEquipPages = new Array();
+                //                 var datadtGWEquipPages = $(dtGWEquipPages).children("string").text();
+                //                 var usera = JSON.parse(datadtGWEquipPages);
+                //                 for (var i = 0, j = 0; i < usera.length; i++) {
+                //                     var userb = usera[i];
+                //                     if (userb.WebPage[0] == "1" && userb.Pages.split('.').length > 2) {
+                //                         var userc = new Array(userb.ID, userb.Name, userb.Pages, userb.HelpPath, userb.MultiScreens, userb.WebPage);
+                //                         GWEquipPages[j++] = userc;
+                //                     }
+                //                 }
+                //                 pageLists();
+                //             }
+                //         });
+                //     }
+                // });
             }
         },
         complete: function (XMLHttpRequest, status) { //请求完成后最终执行参数
@@ -472,10 +472,10 @@ function BackSystemInfor(phoneName, phoneModel, phoneVersion) {
     window.localStorage.phoneName = phoneName;
     window.localStorage.phoneModel = phoneModel;
     window.localStorage.phoneVersion = phoneVersion;
-    try{
-        myJavaFun.GetPushID();//获取推送ID
-    }
-    catch(ex){}
+//  try{
+//      myJavaFun.GetPushID();//获取推送ID
+//  }
+//  catch(ex){}
 }
 
 //获取推送ID
